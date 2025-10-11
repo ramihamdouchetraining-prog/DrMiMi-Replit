@@ -37,6 +37,25 @@ app.use(express.urlencoded({ extended: true, limit: '50mb' }));
 // Static file serving for uploads
 app.use('/uploads', express.static('uploads'));
 
+// Root endpoint - Backend API info
+app.get('/', (req, res) => {
+  res.json({
+    name: 'MediMimi API',
+    version: '1.0.0',
+    status: 'running',
+    message: 'Backend API pour la plateforme MediMimi',
+    endpoints: {
+      health: '/api/health',
+      auth: '/api/auth/*',
+      courses: '/api/courses',
+      quizzes: '/api/quizzes',
+      cases: '/api/cases',
+      admin: '/api/admin/*',
+    },
+    documentation: 'https://github.com/ramihamdouchetraining-prog/DrMiMi-Replit',
+  });
+});
+
 // Health check endpoint for monitoring
 app.get('/api/health', (req, res) => {
   res.json({
