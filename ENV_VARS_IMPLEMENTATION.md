@@ -121,10 +121,13 @@ Run this command locally to test:
 node -e "
 const bcrypt = require('bcryptjs');
 const password = process.env.ADMIN_PASSWORD || 'test123';
-const hash = bcrypt.hashSync(password, 12);
-console.log('Password:', password);
-console.log('Hash:', hash.substring(0, 20) + '...');
-console.log('Verify:', bcrypt.compareSync(password, hash) ? '✅ Match' : '❌ No match');
+(async () => {
+  const hash = await bcrypt.hash(password, 12);
+  console.log('Password:', password);
+  console.log('Hash:', hash.substring(0, 20) + '...');
+  const isMatch = await bcrypt.compare(password, hash);
+  console.log('Verify:', isMatch ? '✅ Match' : '❌ No match');
+})();
 " 
 ```
 
@@ -203,9 +206,11 @@ Then the `ADMIN_PASSWORD` environment variable is not set on Render.
 
 ### Example Strong Passwords
 ```
-Owner: DrM!M!0wn3r#2025!
-Admin: AdM!n$3cur3#2025
+Owner: X9k#mP2$vL8@qR5!
+Admin: T7j$nQ4&wB3#xC9@
 ```
+
+**Note:** These are random examples. Generate your own unique passwords using a password manager or generator.
 
 ### Environment Variable Management
 - ✅ Store in `.env` file locally (gitignored)
