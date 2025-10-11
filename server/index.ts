@@ -7,6 +7,7 @@ import { registerRoutes } from './routes';
 import { seedModules } from './seed';
 import { seedMedicalContent } from './seedMedicalContent';
 import { seedOwner } from './seed-owner';
+import { seedAdmin } from './seed-admin';
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -79,6 +80,7 @@ async function startServer() {
     await seedModules();
     await seedMedicalContent();
     await seedOwner();
+    await seedAdmin();
     
     const httpServer = await registerRoutes(app);
     
