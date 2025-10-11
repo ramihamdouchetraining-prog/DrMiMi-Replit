@@ -1,7 +1,7 @@
 // Language context updated to use i18next
 import React, { createContext, useContext, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import i18n from '../i18n';
+// import i18n from '../i18n';
 
 export type Language = 'fr' | 'en' | 'ar';
 
@@ -25,7 +25,8 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
 
   // Wrapper for t function to provide backward compatibility
   const t = (key: string, options?: any): string => {
-    return i18nTranslate(key, options);
+    const result = i18nTranslate(key, options);
+    return typeof result === 'string' ? result : String(result);
   };
 
   useEffect(() => {
