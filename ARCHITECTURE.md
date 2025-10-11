@@ -296,4 +296,4 @@ Voir [CONTRIBUTING.md](CONTRIBUTING.md) pour les guidelines de contribution.
 
 ---
 
-Document mis à jour le : ${new Date().toLocaleDateString()}
+Document mis à jour le : 2024-10-11
