@@ -169,6 +169,14 @@ export function registerAdminRoutes(app: Express) {
       req.session.adminUserId = user.id;
       req.session.adminRole = user.role;
       
+      // Save session explicitly before responding
+      await new Promise<void>((resolve, reject) => {
+        req.session.save((err: any) => {
+          if (err) reject(err);
+          else resolve();
+        });
+      });
+      
       // Log successful login
       await logAdminAction(
         user.id,

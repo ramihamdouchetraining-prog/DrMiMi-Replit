@@ -64,6 +64,14 @@ router.post("/admin/login", async (req, res) => {
     req.session.adminUserId = user.id;
     req.session.adminUsername = user.username || undefined;
 
+    // Save session explicitly before responding
+    await new Promise<void>((resolve, reject) => {
+      req.session.save((err: any) => {
+        if (err) reject(err);
+        else resolve();
+      });
+    });
+
     res.json({
       success: true,
       user: {
