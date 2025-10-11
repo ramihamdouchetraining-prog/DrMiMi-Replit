@@ -39,8 +39,8 @@ NODE_ENV=production
 PORT=3001
 DATABASE_URL=postgresql://...   (copier depuis .env)
 SESSION_SECRET=...              (copier depuis .env)
-OWNER_PASSWORD_HASH=...         (copier depuis .env)
-ADMIN_PASSWORD_HASH=...         (copier depuis .env)
+OWNER_PASSWORD=...              (copier depuis .env)
+ADMIN_PASSWORD=...              (copier depuis .env)
 OPENAI_API_KEY=...              (copier depuis .env)
 ```
 
