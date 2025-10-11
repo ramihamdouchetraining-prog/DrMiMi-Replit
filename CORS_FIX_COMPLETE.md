@@ -13,7 +13,8 @@ D'après les logs de console fournis, deux problèmes principaux ont été ident
 
 **Changements :**
 - ✅ Pattern regex précis pour valider les URLs Preview Vercel
-- ✅ Support pour `dr-mi-mi-replit-[hash]-[user].vercel.app`
+- ✅ Support pour `dr-mi-mi-replit-[hash]-[user-project-id].vercel.app`
+- ✅ Exemple : `dr-mi-mi-replit-8pyvrmip1-ramis-projects-7dac3957.vercel.app`
 - ✅ Headers CORS additionnels : `exposedHeaders: ['Set-Cookie']`
 - ✅ Gestion correcte des requêtes OPTIONS (preflight)
 - ✅ Logs de débogage pour tracer les origins acceptées/rejetées
@@ -22,7 +23,8 @@ D'après les logs de console fournis, deux problèmes principaux ont été ident
 ```typescript
 origin: (origin, callback) => {
   // Pattern pour Vercel Preview URLs
-  if (origin.match(/^https:\/\/dr-mi-mi-replit-[a-z0-9]+-.*\.vercel\.app$/i)) {
+  // Supporte les hashes et noms de projet avec traits d'union
+  if (origin.match(/^https:\/\/dr-mi-mi-replit-[a-z0-9-]+-.*\.vercel\.app$/i)) {
     console.log(`✅ CORS: Vercel Preview URL autorisée: ${origin}`);
     return callback(null, true);
   }
