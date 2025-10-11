@@ -44,8 +44,8 @@ NODE_ENV=production
 PORT=3001
 DATABASE_URL=<copier depuis ton .env local>
 SESSION_SECRET=<copier depuis ton .env local>
-OWNER_PASSWORD_HASH=<copier depuis ton .env local>
-ADMIN_PASSWORD_HASH=<copier depuis ton .env local>
+OWNER_PASSWORD=<copier depuis ton .env local>
+ADMIN_PASSWORD=<copier depuis ton .env local>
 OPENAI_API_KEY=<copier depuis ton .env local>
 ```
 
