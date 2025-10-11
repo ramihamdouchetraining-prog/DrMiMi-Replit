@@ -44,6 +44,7 @@ app.use(cors({
     
     // Vérifier si l'origin est dans la liste statique
     if (allowedOrigins.includes(origin)) {
+      console.log(`✅ CORS: Origin autorisée (liste statique): ${origin}`);
       return callback(null, true);
     }
     
@@ -55,7 +56,7 @@ app.use(cors({
     
     // Rejeter toutes les autres origines
     console.warn(`⚠️ CORS: Origin NON autorisée: ${origin}`);
-    callback(new Error('Not allowed by CORS'));
+    callback(null, false);
   },
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
