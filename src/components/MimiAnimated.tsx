@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { motion, AnimatePresence, useAnimation } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export type MimiState = 'idle' | 'wave' | 'blink' | 'talk' | 'celebrate';
 
@@ -30,7 +30,7 @@ export const MimiAnimated: React.FC<MimiAnimatedProps> = ({
   const [currentState, setCurrentState] = useState<MimiState>(state);
   const [isVisible, setIsVisible] = useState(true);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
-  const controls = useAnimation();
+  // const controls = useAnimation();
   const containerRef = useRef<HTMLDivElement>(null);
 
   // Check for reduced motion preference

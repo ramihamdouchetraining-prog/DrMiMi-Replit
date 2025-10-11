@@ -32,7 +32,7 @@ export function useAuth() {
   const logout = async () => {
     try {
       // Essayer de déconnecter via l'auth classique
-      const classicLogoutResponse = await fetch("/api/auth/logout", {
+      await fetch("/api/auth/logout", {
         method: 'POST',
         credentials: 'include'
       });

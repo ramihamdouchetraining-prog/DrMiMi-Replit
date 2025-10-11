@@ -1,0 +1,24 @@
+{
+  "home": {
+    "title": "Welcome to Dr.MiMi XXL",
+    "start": "Start the adventure",
+    "chat": "Chat with Dr.MiMi"
+  },
+  "feature": {
+    "structured_courses": "Structured Courses",
+    "visual_summaries": "Visual Summaries",
+    "explained_mcqs": "Explained MCQs",
+    "clinical_cases": "Clinical Cases"
+  },
+  "nav": {
+    "home": "Home",
+    "courses": "Courses",
+    "summaries": "Summaries",
+    "modules": "Modules",
+    "quiz": "Quiz",
+    "library": "Library",
+    "cases": "Cases",
+    "news": "News",
+    "profile": "Profile"
+  }
+}

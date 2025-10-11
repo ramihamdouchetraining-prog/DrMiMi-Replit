@@ -1,0 +1,24 @@
+{
+  "home": {
+    "title": "مرحبا بكم في Dr.MiMi XXL",
+    "start": "ابدأ المغامرة",
+    "chat": "تحدث مع د.ميمي"
+  },
+  "feature": {
+    "structured_courses": "دورات منظمة",
+    "visual_summaries": "ملخصات مرئية",
+    "explained_mcqs": "أسئلة مشروحة",
+    "clinical_cases": "حالات سريرية"
+  },
+  "nav": {
+    "home": "الرئيسية",
+    "courses": "الدورات",
+    "summaries": "الملخصات",
+    "modules": "الوحدات",
+    "quiz": "الاختبار",
+    "library": "المكتبة",
+    "cases": "الحالات",
+    "news": "الأخبار",
+    "profile": "الملف الشخصي"
+  }
+}
