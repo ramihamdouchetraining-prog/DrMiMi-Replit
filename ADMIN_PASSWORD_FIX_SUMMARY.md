@@ -63,10 +63,12 @@ NODE_ENV=production
 PORT=3001
 DATABASE_URL=postgresql://your-connection-string
 SESSION_SECRET=your-session-secret-min-32-chars
-OWNER_PASSWORD=YourSecureOwnerPassword123!
-ADMIN_PASSWORD=YourSecureAdminPassword456!
+OWNER_PASSWORD=Ow$7kL9#mX2vR8pQ
+ADMIN_PASSWORD=Ad$9nM3#wY5tE7bK
 OPENAI_API_KEY=your-openai-key (optional)
 ```
+
+**Note:** These are example passwords. Generate your own secure passwords using a password manager or random generator.
 
 ### Step 2: Trigger Deployment
 - Manual: Click "Manual Deploy" in Render Dashboard
@@ -92,7 +94,7 @@ Look for these success messages:
 
 **Owner Login:**
 - URL: `https://your-frontend-url/owner/login`
-- Username: `MiMiBEN`
+- Username: `MiMiBEN` (case-sensitive)
 - Password: (value from `OWNER_PASSWORD` env var)
 
 ---
@@ -160,8 +162,9 @@ After deployment, verify:
 **Solution:**
 1. Verify `OWNER_PASSWORD` is set on Render
 2. Verify you're using the exact password from the environment variable
-3. Username must be `MiMiBEN` (case-sensitive)
-4. Redeploy to recreate the owner account
+3. **Important:** Username must be exactly `MiMiBEN` (case-sensitive - capital M, B, E, N)
+4. Check for typos or extra spaces in username or password
+5. Redeploy to recreate the owner account
 
 ### Issue: Account exists but password doesn't work
 **Solution:**
@@ -203,7 +206,7 @@ If you encounter issues:
 ---
 
 **Status:** ✅ Fixed and Deployed  
-**Date:** 2025-10-11  
+**Date:** 2024-10-11  
 **Branch:** `copilot/fix-api-connectivity-issues`  
 **Commits:** 
 - `4870402` - Fix: Correct ADMIN_PASSWORD and OWNER_PASSWORD environment variable names
