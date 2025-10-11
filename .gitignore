@@ -1,0 +1,89 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Build outputs
+dist/
+dist-ssr/
+build/
+*.local
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea/
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+*~
+
+# Testing
+coverage/
+*.lcov
+.nyc_output/
+playwright-report/
+test-results/
+playwright/.cache/
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+.drizzle/
+
+# Uploads and user-generated content
+uploads/
+attached_assets/stock_images/
+attached_assets/user_uploads/
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+.cache/
+
+# OS files
+Thumbs.db
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Service worker cache
+sw.js.map
+workbox-*.js
+
+# Replit specific (optional, for local development)
+.replit
+replit.nix
+.config/
+
+# PWA assets (generated)
+public/sw.js.map
+
+# Package manager locks (choose one)
+# Uncomment if using a specific package manager
+# package-lock.json
+# yarn.lock
+# pnpm-lock.yaml
