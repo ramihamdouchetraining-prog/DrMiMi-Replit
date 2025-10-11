@@ -35,6 +35,9 @@ export function getSession() {
     ttl: sessionTtl,
     tableName: "sessions",
   });
+  
+  const isProduction = process.env.NODE_ENV === 'production';
+  
   return session({
     secret: process.env.SESSION_SECRET!,
     store: sessionStore,
@@ -42,10 +45,12 @@ export function getSession() {
     saveUninitialized: false,
     cookie: {
       httpOnly: true,
-      secure: process.env.NODE_ENV === 'production', // true in production, false in dev
-      sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax', // 'none' for cross-domain in prod
+      secure: isProduction, // true in production, false in dev
+      sameSite: isProduction ? 'none' : 'lax', // 'none' for cross-domain in prod
       maxAge: sessionTtl,
+      domain: isProduction ? undefined : undefined, // Let browser handle domain
     },
+    proxy: isProduction, // Trust proxy in production (Render uses proxies)
   });
 }
 
