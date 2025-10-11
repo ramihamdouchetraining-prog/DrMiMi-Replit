@@ -3,6 +3,8 @@
 # Script to test CORS configuration with different origins
 # Usage: ./scripts/test-cors-endpoints.sh [backend-url]
 # Example: ./scripts/test-cors-endpoints.sh https://drmimi-replit.onrender.com
+#
+# Requirements: curl 7.76.0+ (for --fail-with-body support)
 
 # Default backend URL - can be overridden via environment variable or argument
 DEFAULT_BACKEND_URL="${BACKEND_URL:-https://drmimi-replit.onrender.com}"
@@ -38,7 +40,7 @@ test_cors() {
     curl_exit=$?
   fi
   
-  if [ $curl_exit -ne 0 ]; then
+  if [ "$curl_exit" -ne 0 ]; then
     echo "❌ Network error (curl exit code: $curl_exit) - FAILED"
   else
     http_code=$(echo "$response" | grep "HTTP_CODE:" | cut -d: -f2)
