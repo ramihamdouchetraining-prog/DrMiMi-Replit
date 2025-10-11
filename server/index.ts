@@ -31,6 +31,7 @@ app.use(cors({
     'http://localhost:5000',
     'http://localhost:5173',
     'https://dr-mimi.netlify.app',
+    'https://dr-mi-mi-replit.vercel.app', // ← Production Vercel URL
     'https://drmimi-replit.onrender.com',
   ],
   credentials: true,
