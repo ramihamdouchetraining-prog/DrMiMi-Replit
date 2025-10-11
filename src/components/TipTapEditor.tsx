@@ -30,9 +30,9 @@ import {
 } from 'lucide-react';
 import { useDropzone } from 'react-dropzone';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ImageGallery } from '../extensions/ImageGallery';
-import { Callout } from '../extensions/Callout';
-import { PaywallBlock } from '../extensions/PaywallBlock';
+import { ImageGallery } from '../extentions/ImageGallery';
+import { Callout } from '../extentions/Callout';
+import { PaywallBlock } from '../extentions/PaywallBlock';
 import { editorTemplates } from '../utils/editorTemplates';
 
 // Create lowlight instance with common languages

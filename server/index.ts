@@ -1,4 +1,5 @@
 // Main server entry point for MediMimi backend
+import 'dotenv/config'; // Load environment variables
 import express from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
