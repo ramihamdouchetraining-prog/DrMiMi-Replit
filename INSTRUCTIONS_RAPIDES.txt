@@ -1,0 +1,60 @@
+╔═══════════════════════════════════════════════════════════════╗
+║              INSTRUCTIONS RAPIDES - Dr-MiMi                   ║
+║                   Résolution du Problème                      ║
+╚═══════════════════════════════════════════════════════════════╝
+
+PROBLÈME IDENTIFIÉ :
+-------------------
+❌ Un fichier HTML a été téléchargé au lieu des fichiers du projet
+❌ Vos fichiers sont sur votre PC : C:\Users\HAMDOUCHE Rami\Desktop\replit\Dr-MiMi.zip
+
+SOLUTION EN 3 ÉTAPES :
+---------------------
+
+ÉTAPE 1 : Sur votre PC
+  1. Allez dans : C:\Users\HAMDOUCHE Rami\Desktop\replit\
+  2. Trouvez le fichier : Dr-MiMi.zip
+  3. Clic droit → "Extraire tout..."
+  4. Choisissez un emplacement (ex: Desktop\Dr-MiMi-Extracted)
+
+ÉTAPE 2 : Sur GitHub
+  1. Allez sur : https://github.com/ramihamdouchetraining-prog/DrMiMi-Replit
+  2. Cliquez sur "Add file" (bouton vert)
+  3. Cliquez sur "Upload files"
+  4. Glissez-déposez TOUS les fichiers du dossier extrait
+  5. Écrivez le message : "Ajout du projet Dr-MiMi"
+  6. Cliquez sur "Commit changes"
+
+ÉTAPE 3 : Vérification
+  ✓ Vos fichiers apparaissent sur GitHub
+  ✓ Le projet est maintenant accessible
+  ✓ Vous pouvez l'importer dans Replit
+
+MÉTHODE ALTERNATIVE - Via Replit Direct :
+-----------------------------------------
+  1. Allez sur : https://replit.com
+  2. Cliquez sur "Create" → "Import from GitHub"
+  3. Collez : ramihamdouchetraining-prog/DrMiMi-Replit
+  4. Une fois dans Replit, utilisez "Upload file" pour ajouter vos fichiers
+
+FICHIERS CRÉÉS POUR VOUS :
+--------------------------
+  ✓ README.md - Guide complet en français
+  ✓ GUIDE_RESOLUTION.md - Instructions détaillées
+  ✓ .gitignore - Évite les fichiers inutiles
+  ✓ .replit.example - Configuration Replit (à adapter)
+  ✓ INSTRUCTIONS_RAPIDES.txt - Ce fichier
+
+BESOIN D'AIDE ?
+--------------
+Consultez README.md ou GUIDE_RESOLUTION.md pour plus de détails.
+
+⚠️ IMPORTANT :
+- NE téléchargez PAS le fichier .zip directement
+- Extrayez-le d'abord et téléchargez le CONTENU
+- Si des fichiers sont trop gros (>100MB), contactez le support
+
+═══════════════════════════════════════════════════════════════
+Problème résolu le : 2025-10-11
+Dépôt prêt pour recevoir vos fichiers de projet
+═══════════════════════════════════════════════════════════════
