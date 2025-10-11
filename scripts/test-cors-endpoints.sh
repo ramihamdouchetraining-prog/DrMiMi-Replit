@@ -1,0 +1,69 @@
+#!/bin/bash
+
+# Script to test CORS configuration with different origins
+# Usage: ./scripts/test-cors-endpoints.sh [backend-url]
+# Example: ./scripts/test-cors-endpoints.sh https://drmimi-replit.onrender.com
+
+BACKEND_URL="${1:-https://drmimi-replit.onrender.com}"
+API_ENDPOINT="${BACKEND_URL}/api/health"
+
+echo "========================================"
+echo "Testing CORS Configuration"
+echo "Backend: $BACKEND_URL"
+echo "========================================"
+echo ""
+
+# Test function
+test_cors() {
+  local origin="$1"
+  local description="$2"
+  
+  echo "Test: $description"
+  echo "Origin: $origin"
+  
+  if [ -z "$origin" ]; then
+    # Test with no origin
+    response=$(curl -s -w "\nHTTP_CODE:%{http_code}" "$API_ENDPOINT")
+  else
+    # Test with specific origin
+    response=$(curl -s -w "\nHTTP_CODE:%{http_code}" \
+      -H "Origin: $origin" \
+      -H "Access-Control-Request-Method: GET" \
+      -H "Access-Control-Request-Headers: Content-Type" \
+      -X OPTIONS \
+      "$API_ENDPOINT")
+  fi
+  
+  http_code=$(echo "$response" | grep "HTTP_CODE:" | cut -d: -f2)
+  
+  if [ "$http_code" = "200" ] || [ "$http_code" = "204" ]; then
+    echo "✅ Status: $http_code - PASSED"
+  else
+    echo "❌ Status: $http_code - FAILED"
+  fi
+  
+  echo ""
+}
+
+# Run tests
+echo "1. Testing Localhost (Development)"
+test_cors "http://localhost:5000" "Localhost 5000"
+test_cors "http://localhost:5173" "Localhost 5173"
+
+echo "2. Testing Production URLs"
+test_cors "https://dr-mimi.netlify.app" "Netlify Production"
+test_cors "https://dr-mi-mi-replit.vercel.app" "Vercel Production"
+
+echo "3. Testing Vercel Preview URLs"
+test_cors "https://dr-mi-mi-replit-abc123.vercel.app" "Vercel Preview (random)"
+test_cors "https://dr-mi-mi-replit-git-main.vercel.app" "Vercel Preview (git branch)"
+
+echo "4. Testing No Origin (API clients)"
+test_cors "" "No Origin (Postman/Mobile)"
+
+echo "5. Testing Blocked Origins"
+test_cors "https://evil.com" "Random Domain (should be blocked)"
+
+echo "========================================"
+echo "CORS Testing Complete"
+echo "========================================"
