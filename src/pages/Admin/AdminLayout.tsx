@@ -20,6 +20,7 @@ import {
 import { useTheme } from '../../contexts/ThemeContext';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { useQuery } from '@tanstack/react-query';
+import { getApiUrl } from '../../config/api';
 
 
 interface NavItem {
@@ -44,7 +45,7 @@ const AdminLayout: React.FC = () => {
   const { data: adminData, isLoading } = useQuery({
     queryKey: ['adminCheck'],
     queryFn: async () => {
-      const response = await fetch('/api/admin/check', {
+      const response = await fetch(getApiUrl('/api/admin/check'), {
         credentials: 'include'
       });
       if (!response.ok) throw new Error('Not authorized');
@@ -147,7 +148,7 @@ const AdminLayout: React.FC = () => {
 
   const handleLogout = () => {
     // Clear session and redirect
-    fetch('/api/admin/logout', { method: 'POST', credentials: 'include' })
+    fetch(getApiUrl('/api/admin/logout'), { method: 'POST', credentials: 'include' })
       .then(() => navigate('/'));
   };
 
