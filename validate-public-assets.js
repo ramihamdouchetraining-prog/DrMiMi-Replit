@@ -4,7 +4,7 @@
  * Vérifie que tous les fichiers attendus sont présents
  */
 
-import { existsSync, mkdirSync, writeFileSync } from 'fs';
+import { existsSync, mkdirSync, writeFileSync, statSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 
@@ -75,19 +75,27 @@ function validateAssets(category, files, basePath) {
   
   let missing = [];
   let present = [];
+  let emptyFiles = [];
   
   for (const file of files) {
     const fullPath = join(basePath, file);
     if (existsSync(fullPath)) {
-      present.push(file);
-      log(`  ✓ ${file}`, colors.green);
+      // Check if file is empty (placeholder)
+      const stats = statSync(fullPath);
+      if (stats.size === 0) {
+        emptyFiles.push(file);
+        log(`  ⚠ ${file} - PLACEHOLDER VIDE`, colors.yellow);
+      } else {
+        present.push(file);
+        log(`  ✓ ${file}`, colors.green);
+      }
     } else {
       missing.push(file);
       log(`  ✗ ${file} - MANQUANT`, colors.red);
     }
   }
   
-  return { missing, present, total: files.length };
+  return { missing, present, emptyFiles, total: files.length };
 }
 
 function generateReport(results) {
@@ -97,29 +105,37 @@ function generateReport(results) {
   
   let totalMissing = 0;
   let totalPresent = 0;
+  let totalEmpty = 0;
   let totalFiles = 0;
   
   for (const [category, result] of Object.entries(results)) {
     totalMissing += result.missing.length;
     totalPresent += result.present.length;
+    totalEmpty += result.emptyFiles.length;
     totalFiles += result.total;
     
     log(`\n${category}:`, colors.yellow);
     log(`  Présents: ${result.present.length}/${result.total}`, 
         result.present.length === result.total ? colors.green : colors.yellow);
+    log(`  Placeholders vides: ${result.emptyFiles.length}/${result.total}`, 
+        result.emptyFiles.length > 0 ? colors.yellow : colors.green);
     log(`  Manquants: ${result.missing.length}/${result.total}`, 
         result.missing.length > 0 ? colors.red : colors.green);
   }
   
   log('\n' + '-'.repeat(60), colors.cyan);
-  log(`Total: ${totalPresent}/${totalFiles} fichiers présents`, 
+  log(`Total: ${totalPresent}/${totalFiles} fichiers réels`, 
       totalPresent === totalFiles ? colors.green : colors.yellow);
   
   if (totalMissing > 0) {
     log(`\n⚠️  ${totalMissing} fichier(s) manquant(s)`, colors.red);
     return false;
+  } else if (totalEmpty > 0) {
+    log(`\n⚠️  ${totalEmpty} placeholder(s) vide(s) - À remplacer avant production!`, colors.yellow);
+    log('✅ Structure complète, mais placeholders doivent être remplacés', colors.green);
+    return true;
   } else {
-    log('\n✅ Tous les fichiers requis sont présents!', colors.green);
+    log('\n✅ Tous les fichiers requis sont présents avec du contenu!', colors.green);
     return true;
   }
 }

@@ -6,6 +6,23 @@
 
 ---
 
+## 🚨 AVERTISSEMENT CRITIQUE
+
+> **⚠️ PLACEHOLDERS VIDES - ACTION REQUISE AVANT PRODUCTION**
+> 
+> Les fichiers créés dans `public/images/` sont des **placeholders vides (0 bytes)**. 
+> Ils permettent au code de fonctionner en développement mais sont **INUTILISABLES EN PRODUCTION**.
+> 
+> **Actions requises:**
+> - [ ] Remplacer TOUS les 17 fichiers placeholder par de vraies images PNG
+> - [ ] Vérifier les spécifications (voir PUBLIC_ASSETS.md)
+> - [ ] Optimiser les images (< 500KB par fichier recommandé)
+> - [ ] Valider avec `npm run validate:assets` avant déploiement
+> 
+> **Ne PAS déployer en production sans remplacer les placeholders !**
+
+---
+
 ## 📊 Vue d'Ensemble
 
 Cette implémentation fournit un système complet de validation et de gestion des ressources statiques du dossier `public/` pour le projet Dr. Mimi.
