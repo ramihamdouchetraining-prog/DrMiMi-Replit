@@ -124,7 +124,7 @@ function generateReport(results) {
   }
   
   log('\n' + '-'.repeat(60), colors.cyan);
-  log(`Total: ${totalPresent}/${totalFiles} fichiers réels`, 
+  log(`Total: ${totalPresent}/${totalFiles} fichiers avec contenu`, 
       totalPresent === totalFiles ? colors.green : colors.yellow);
   
   if (totalMissing > 0) {
