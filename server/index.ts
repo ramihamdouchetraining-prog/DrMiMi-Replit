@@ -47,14 +47,14 @@ app.use(
 
       // Vérifier si l'origin est dans la liste statique
       if (allowedOrigins.includes(origin)) {
+        console.log(`✅ CORS: Origin autorisée (statique): ${origin}`);
         return callback(null, true);
       }
 
       // Accepter TOUTES les URLs Preview Vercel (dr-mi-mi-replit-*.vercel.app)
-      if (
-        origin.includes("dr-mi-mi-replit") &&
-        origin.includes(".vercel.app")
-      ) {
+      // Pattern: https://dr-mi-mi-replit-[hash]-[user-project-id].vercel.app
+      // Example: dr-mi-mi-replit-8pyvrmip1-ramis-projects-7dac3957.vercel.app
+      if (origin.match(/^https:\/\/dr-mi-mi-replit-[a-z0-9-]+-.*\.vercel\.app$/i)) {
         console.log(`✅ CORS: Vercel Preview URL autorisée: ${origin}`);
         return callback(null, true);
       }
@@ -66,6 +66,9 @@ app.use(
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization", "X-Requested-With"],
+    exposedHeaders: ["Set-Cookie"],
+    preflightContinue: false,
+    optionsSuccessStatus: 204,
   })
 );
 
