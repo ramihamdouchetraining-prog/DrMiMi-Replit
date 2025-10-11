@@ -3,6 +3,10 @@ import ReactDOM from 'react-dom/client'
 import App from './App.tsx'
 import './index.css'
 import './i18n'
+import { setupFetchProxy } from './utils/fetchProxy'
+
+// Activer le Fetch Proxy pour intercepter les requêtes /api en production
+setupFetchProxy();
 
 // Service Worker PWA - Réactivé pour production
 if ('serviceWorker' in navigator && import.meta.env.PROD) {

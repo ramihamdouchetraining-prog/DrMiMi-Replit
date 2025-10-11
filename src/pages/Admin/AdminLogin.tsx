@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Lock, User, Shield, AlertCircle } from 'lucide-react';
 import { useTheme } from '../../contexts/ThemeContext';
+import { getApiUrl } from '../../config/api';
 
 const AdminLogin: React.FC = () => {
   const { isDark } = useTheme();
@@ -18,7 +19,7 @@ const AdminLogin: React.FC = () => {
     setIsLoading(true);
 
     try {
-      const response = await fetch('/api/admin/login', {
+      const response = await fetch(getApiUrl('/api/admin/login'), {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

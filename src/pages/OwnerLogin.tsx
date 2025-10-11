@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Crown, Lock, User, Eye, EyeOff, Sparkles } from 'lucide-react';
 import { useTheme } from '../contexts/ThemeContext';
+import { getApiUrl } from '../config/api';
 
 interface LoginForm {
   username: string;
@@ -23,7 +24,7 @@ const OwnerLogin: React.FC = () => {
     setLoading(true);
 
     try {
-      const response = await fetch('/api/admin/auth/admin/login', {
+      const response = await fetch(getApiUrl('/api/admin/auth/admin/login'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include',
