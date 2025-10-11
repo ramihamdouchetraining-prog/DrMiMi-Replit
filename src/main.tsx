@@ -4,6 +4,9 @@ import App from './App.tsx'
 import './index.css'
 import './i18n'
 
+// Service Worker temporairement désactivé pour éviter les reloads automatiques
+// Réactiver en production pour PWA
+/*
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
     navigator.serviceWorker
@@ -27,6 +30,7 @@ if ('serviceWorker' in navigator) {
       });
   });
 }
+*/
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>

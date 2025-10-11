@@ -10,9 +10,11 @@ export default defineConfig({
     port: 5000,
     allowedHosts: ['.replit.dev', '.replit.app', '.repl.co', 'localhost'],
     hmr: {
-      clientPort: 443,
-      protocol: 'wss',
-      host: process.env.REPLIT_DEV_DOMAIN?.split(':')[0] || 'localhost'
+      // Configuration HMR adaptée pour GitHub Codespaces / environnement local
+      overlay: true, // Afficher les erreurs en overlay au lieu de recharger
+      protocol: 'ws', // Utiliser WS au lieu de WSS pour environnement local
+      host: 'localhost',
+      port: 5000
     },
     proxy: {
       '/api': {
