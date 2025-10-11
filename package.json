@@ -7,7 +7,7 @@
     "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
     "dev:frontend": "vite --host 0.0.0.0 --port 5000",
     "dev:backend": "tsx watch server/index.ts",
-    "build": "echo 'Build: Using TSX runtime for TypeScript'",
+    "build": "vite build",
     "build:frontend": "vite build",
     "build:check": "tsc && vite build",
     "build:backend": "tsc --project tsconfig.backend.json",
