@@ -25,15 +25,38 @@ app.use(helmet({
   },
 }));
 
-// CORS configuration for frontend
+// CORS configuration for frontend - Dynamique pour Vercel
 app.use(cors({
-  origin: [
-    'http://localhost:5000',
-    'http://localhost:5173',
-    'https://dr-mimi.netlify.app',
-    'https://dr-mi-mi-replit.vercel.app', // ← Production Vercel URL
-    'https://drmimi-replit.onrender.com',
-  ],
+  origin: (origin, callback) => {
+    // Liste des origines statiques autorisées
+    const allowedOrigins = [
+      'http://localhost:5000',
+      'http://localhost:5173',
+      'https://dr-mimi.netlify.app',
+      'https://dr-mi-mi-replit.vercel.app', // Production Vercel
+      'https://drmimi-replit.onrender.com',
+    ];
+    
+    // Accepter les requêtes sans origin (Postman, curl, etc.)
+    if (!origin) {
+      return callback(null, true);
+    }
+    
+    // Vérifier si l'origin est dans la liste statique
+    if (allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    }
+    
+    // Accepter TOUTES les URLs Preview Vercel (dr-mi-mi-replit-*.vercel.app)
+    if (origin.includes('dr-mi-mi-replit') && origin.includes('.vercel.app')) {
+      console.log(`✅ CORS: Vercel Preview URL autorisée: ${origin}`);
+      return callback(null, true);
+    }
+    
+    // Rejeter toutes les autres origines
+    console.warn(`⚠️ CORS: Origin NON autorisée: ${origin}`);
+    callback(new Error('Not allowed by CORS'));
+  },
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],
