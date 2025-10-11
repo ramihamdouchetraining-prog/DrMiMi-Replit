@@ -1,0 +1,25 @@
+# Configuration Replit - Exemple
+# Renommez ce fichier en ".replit" et ajustez selon votre type de projet
+
+# Pour un projet Python
+# run = "python main.py"
+# language = "python3"
+# [nix]
+# channel = "stable-21_11"
+
+# Pour un projet Node.js
+# run = "node index.js"
+# language = "nodejs"
+# [nix]
+# channel = "stable-21_11"
+
+# Pour un projet Web HTML/CSS/JS
+# run = "python -m http.server 8000"
+# language = "html"
+
+# Pour un projet avec serveur Web
+# run = "npm start"
+# language = "nodejs"
+
+# Décommentez et modifiez selon votre type de projet
+# Une fois vos fichiers téléchargés, ce fichier sera configuré automatiquement
