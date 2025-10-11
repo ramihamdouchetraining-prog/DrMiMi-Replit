@@ -24,9 +24,14 @@ cd DrMiMi-Replit
 # Installer les dépendances
 npm install
 
+# Valider et créer la structure des ressources publiques
+npm run setup:assets
+
 # Lancer le serveur de développement
 npm run dev
 ```
+
+> **⚠️ Important**: Après l'installation, remplacez les fichiers placeholder dans `public/images/` par de vraies images. Voir [PUBLIC_ASSETS.md](PUBLIC_ASSETS.md) pour plus de détails.
 
 ## 📦 Scripts disponibles
 
@@ -34,6 +39,8 @@ npm run dev
 - `npm run build` - Compile le projet pour la production
 - `npm run preview` - Prévisualise la version de production
 - `npm run lint` - Vérifie le code avec ESLint
+- `npm run validate:assets` - Valide les ressources du dossier public
+- `npm run setup:assets` - Crée la structure et les placeholders des ressources
 
 ## 🛠️ Technologies utilisées
 
